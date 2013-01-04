@@ -17,4 +17,9 @@ create(N) when N > 0 -> create([], N).
 create(List, 0)      -> List;
 create(List, N)      -> create([N|List], N-1).
 
-reverse_create(N) when N > 0 -> lists:reverse(create(N)).
+% naive version of reverse_create:
+% reverse_create(N) when N > 0 -> lists:reverse(create(N)).
+
+reverse_create(N) when N > 0            -> reverse_create([], N, 1).
+reverse_create(List, N, M) when N =:= M -> [M|List];
+reverse_create(List, N, M)              -> reverse_create([M|List], N, M+1).
