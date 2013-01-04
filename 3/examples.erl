@@ -13,13 +13,13 @@ sum_acc(N, M, Carry) when N < M   -> sum_acc(N, M - 1, Carry + M).
 
 % exercise 3-2
 
-create(N) when N > 0 -> create([], N).
-create(List, 0)      -> List;
-create(List, N)      -> create([N|List], N-1).
+create(N) when N > 0 -> create(N, []).
+create(0, List)      -> List;
+create(N, List)      -> create(N-1, [N|List]).
 
 % naive version of reverse_create:
 % reverse_create(N) when N > 0 -> lists:reverse(create(N)).
 
-reverse_create(N) when N > 0            -> reverse_create([], N, 1).
-reverse_create(List, N, M) when N =:= M -> [M|List];
-reverse_create(List, N, M)              -> reverse_create([M|List], N, M+1).
+reverse_create(N) when N > 0            -> reverse_create(N, 1, []).
+reverse_create(N, M, List) when N =:= M -> [M|List];
+reverse_create(N, M, List)              -> reverse_create(N, M+1, [M|List]).
