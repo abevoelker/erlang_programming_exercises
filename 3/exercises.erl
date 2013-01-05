@@ -1,10 +1,11 @@
--module(examples).
+-module(exercises).
 -export([
          sum/1, sum/2,
          create/1,
          reverse_create/1,
          print_integers/1,
-         print_even_integers/1]).
+         print_even_integers/1
+        ]).
 
 % exercise 3-1
 
